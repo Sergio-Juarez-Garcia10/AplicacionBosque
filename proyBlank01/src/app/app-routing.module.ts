@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'configuracion', loadChildren: './pages/configuracion/configuracion.module#ConfiguracionPageModule' },
   { path: 'contacto', loadChildren: './pages/contacto/contacto.module#ContactoPageModule' },
   { path: 'emergencia', loadChildren: './pages/emergencia/emergencia.module#EmergenciaPageModule' },
+  { path: 'sitio', loadChildren: './pages/sitio/sitio.module#SitioPageModule' },
 ];
 
 @NgModule({
