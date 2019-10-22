@@ -1,9 +1,15 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Configuracion</ion-title>
+    <ion-title class="ion-align-items-center">Configuración APP</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+    <ion-item>
+        <ion-label>Actividad</ion-label>
+        <ion-select placeholder="Seleccionar" name="acti" [(ngModel)]= "actividad.acti"  >
+          <ion-select-option value="S">Senderismo</ion-select-option>
+          <ion-select-option value="A">Alpinismo</ion-select-option>
+        </ion-select>
+      </ion-item> 
 </ion-content>

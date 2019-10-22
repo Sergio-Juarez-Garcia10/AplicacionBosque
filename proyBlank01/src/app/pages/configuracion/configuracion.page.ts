@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./configuracion.page.scss'],
 })
 export class ConfiguracionPage implements OnInit {
+  actividad = {
+    acti: '',
+  };
 
   constructor() { }
 
