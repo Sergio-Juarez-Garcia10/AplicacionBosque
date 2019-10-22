@@ -3,6 +3,26 @@
     <ion-title>login</ion-title>
   </ion-toolbar>
 </ion-header>
+<form #formLogin="ngForm" (ngSubmit) = "validaLogin(formLogin)">
+      
+  <ion-list> 
+   <ion-item>
+     
+     <ion-label>Correo: </ion-label>
+       <ion-input type ="text" name="nombre" required [(ngModel)] = "usuario.email"> </ion-input> 
+   </ion-item>
+
+<ion-item>
+       <ion-label>Password: </ion-label>
+       <ion-input type ="password" name="password" required [(ngModel)]= "usuario.password" > </ion-input>
+   </ion-item>
+ 
+
+  <ion-button type="subimit" color ="primary" expand="full"
+   (click) = alertaConfirmacion() >Enviar</ion-button> 
+
+  </ion-list>
+      </form>
 
 <ion-content>
 
