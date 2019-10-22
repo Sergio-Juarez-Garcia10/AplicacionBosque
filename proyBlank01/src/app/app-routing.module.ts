@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'mapa', loadChildren: './pages/mapa/mapa.module#MapaPageModule' },
   { path: 'configuracion', loadChildren: './pages/configuracion/configuracion.module#ConfiguracionPageModule' },
   { path: 'contacto', loadChildren: './pages/contacto/contacto.module#ContactoPageModule' },
+  { path: 'emergencia', loadChildren: './pages/emergencia/emergencia.module#EmergenciaPageModule' },
 ];
 
 @NgModule({
