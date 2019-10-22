@@ -8,6 +8,8 @@ const routes: Routes = [
   { path: 'registro', loadChildren: './pages/registro/registro.module#RegistroPageModule' },
   { path: 'tabs', loadChildren: './pages/tabs/tabs.module#TabsPageModule' },
   { path: 'mapa', loadChildren: './pages/mapa/mapa.module#MapaPageModule' },
+  { path: 'configuracion', loadChildren: './pages/configuracion/configuracion.module#ConfiguracionPageModule' },
+  { path: 'contacto', loadChildren: './pages/contacto/contacto.module#ContactoPageModule' },
 ];
 
 @NgModule({

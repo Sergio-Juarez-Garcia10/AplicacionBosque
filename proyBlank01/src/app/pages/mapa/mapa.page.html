@@ -1,9 +1,206 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>mapa</ion-title>
+    <ion-title>Mapa</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+    <!DOCTYPE html>
+
+    <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    
+    <head>
+        <meta charset="utf-8" />
+        <title>Dirección</title>
+        <!-- CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+              integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
+              crossorigin="anonymous">
+        <!-- Tema opcional -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"
+              integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+        <!-- JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"
+                integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ=="
+                crossorigin="anonymous"></script>
+    
+    
+    
+    </head>
+    
+    <body>
+        <script type="text/javascript">
+            var map;
+            var marker;
+            var watchId;
+            var infowindow;
+            var coordenadas;
+        /**
+        * Funcion que carga el mapa al iniciar la página
+        */
+            function initMap() {
+                var myLatLng = { lat: 19.474127177272432, lng: -99.04695225 };
+                geocoder = new google.maps.Geocoder();
+                map = new google.maps.Map(document.getElementById('mapa'), {
+                    zoom: 5,
+                    center: myLatLng,
+                    disableDefaultUI: true
+                });
+    
+                ////Marcador
+                //marker = new google.maps.Marker({
+                //    map: map,
+                //    draggable: true,
+                //    animation: google.maps.Animation.DROP,
+                //    position: new google.maps.LatLng(myLatLng),
+    
+                //});
+    
+                
+            }
+        /**
+        * Funcion para crear un cuadro de dialogo sobre el marcador
+        * @param  {string, string}
+        */
+            function creaAlertaPersonalizada(_textoPersonalizado, _marker) {
+                if (infowindow) infowindow.close();
+                var contentString = '<div id="content">' +
+                    '<div id="siteNotice">' +
+                    '</div>' +
+                    '<h1 id="firstHeading">' + _textoPersonalizado + '</h1>' +
+                    '</div>';
+                infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
+                infowindow.open(map, _marker);
+            }
+    
+            function getLatitud() {
+                var lat = document.getElementById("txtLatitud").value;
+                return lat.toString();
+            }
+            function getLongitud() {
+                var lng = document.getElementById("txtLongitud").value;
+                return lng.toString();
+            }
+    
+            function setCoordinates(_lat, _lng) {
+                var myLatLng = { lat: _lat, lng: _lng };
+    
+                map = new google.maps.Map(document.getElementById('mapa'), {
+                    zoom: 10,
+                    center: myLatLng,
+                    disableDefaultUI: true
+                });
+    
+                //Marcador
+                marker = new google.maps.Marker({
+                    map: map,
+                    draggable: true,
+                    animation: google.maps.Animation.DROP,
+                    position: new google.maps.LatLng(myLatLng),
+    
+                });
+    
+                document.getElementById("txtLatitud").value = _lat;
+                document.getElementById("txtLongitud").value = _lng;
+    
+            }
+    
+            /**
+        * Funcion para geocodificar una dirección string a una coordenada (latm lng)
+        */
+            function geocodificarDireccion() {
+    
+                var address = document.getElementById("txtDireccion").value;
+    
+                geocoder.geocode({ 'address': address }, function (results, status) {
+                    if (status === 'OK') {
+                        map.setCenter(results[0].geometry.location);
+                        var myLatLng = { lat: results[0].geometry.location.lat(), lng: results[0].geometry.location.lng() };
+                        marker = new google.maps.Marker({
+                            map: map,
+                            draggable: true,
+                            animation: google.maps.Animation.DROP,
+                            position: new google.maps.LatLng(myLatLng),
+    
+                        });
+    
+                        //Evento que se ejecuta al dar click al marcador
+                        marker.addListener('click', function () {
+                            creaAlertaPersonalizada(marker.getPosition(), marker);
+                            var markerPosition = marker.getPosition();
+                            document.getElementById("txtLatitud").value = markerPosition.lat();
+                            document.getElementById("txtLongitud").value = markerPosition.lng();
+                            this.coordenadas = { lat: myLatLng, lng: myLatLng.lng };
+                        });
+    
+                        document.getElementById("txtLatitud").value = results[0].geometry.location.lat();
+                        document.getElementById("txtLongitud").value = results[0].geometry.location.lng();
+    
+                    } else {
+                        alert('Geocodificación no pudo realizarse: ' + status);
+                    }
+                });
+            }
+        </script>
+    
+        <!--Section: Contact v.2-->
+        <form>
+            <!-- Grid row -->
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="text-align: left">
+                    <label>Dirección:</label>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!--<input type="text" id="txtDireccion" class="form-control" placeholder="Latitud">-->
+                    <textarea id="txtDireccion" class="form-control" rows="4" cols="100" maxlength="500"
+                              placeholder="Dirección"></textarea>
+                </div>
+                <br>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!--<button type="button" class="btn btn-primary">Buscar</button>-->
+                    <input type="button" class="btn btn-primary" value="Buscar" onclick="geocodificarDireccion()" />
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="text-align: left">
+                    <label>Latitud:</label>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <input type="text" id="txtLatitud" class="form-control" enable="false" placeholder="Latitud">
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="text-align: left">
+                    <label>Longitud:</label>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <input type="text" id="txtLongitud" class="form-control" enable="false" placeholder="Longitud">
+                </div>
+            </div>
+            <!-- Grid row -->
+        </form>
+        <div class="row">
+            <div class="col-lg-12">
+    
+            </div>
+            <div class="col-lg-12">
+                <div class="card border-info mb-3">
+                    <div class="card-body text-info">
+                        <h5 class="card-title">Mapa</h5>
+                        <div id="mapa" class="z-depth-1-half map-container" style="height: 700px"></div>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+        
+        <!--Section: Contact v.2-->
+        <script async
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZ6P_KlR5ECz9Xu3J3aR5QtUXXOWkLg_U&callback=initMap">
+        </script>
+    
+    </body>
+    
+    </html>
+    
 
 </ion-content>

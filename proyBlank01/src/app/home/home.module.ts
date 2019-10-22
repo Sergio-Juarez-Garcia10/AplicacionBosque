@@ -15,12 +15,12 @@ import { HomePage } from './home.page';
       {
         path: '',
         component: HomePage,
-        children: [
-          {
-            path : 'registro' ,
-            loadChildren: '../registro/registro.module#Registro'
-          }
-        ]
+       // children: [
+        //  {
+           // path : 'tabs' ,
+      //  loadChildren: '../tabs/tabs.module#TabsPageModule'
+         // }
+       // ]
       }
     ])
   ],

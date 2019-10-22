@@ -11,24 +11,24 @@ const routes: Routes = [
   {
     path: '',
     component: TabsPage,
-    children: [
-      {
-        path : 'cuenta' ,
-        loadChildren: '../cuenta/cuenta.module#CuentaPageModule'
-      },
-      {
-        path : 'contacto' ,
-        loadChildren: '../contacto/contacto.module#ContactoPageModule'
-      },
-      {
-        path : 'configuracion' ,
-        loadChildren: '../configuracion/configuracion.module#ConfiguracionPageModule'
-      },
-      {
-        path : 'registro' ,
-        loadChildren: '../registro/registro.module#RegistroPageModule'
-      }
-    ]
+   // children: [
+     // {
+      //  path : 'registro' ,
+        // loadChildren: '../registro/registro.module#RegistroPageModule'
+      // },
+     // {
+        // path : 'contacto' ,
+        // loadChildren: '../contacto/contacto.module#ContactoPageModule'
+      // },
+      // {
+        // path : 'configuracion' ,
+        // loadChildren: '../configuracion/configuracion.module#ConfiguracionPageModule'
+      // },
+      // {
+        // path : 'mapa' ,
+        // loadChildren: '../mapa/mapa.module#MapaPageModule'
+      // }
+    // ]
   }
 
 ];
