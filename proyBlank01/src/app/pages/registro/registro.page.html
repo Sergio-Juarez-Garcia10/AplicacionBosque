@@ -1,9 +1,63 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>registro</ion-title>
+    <ion-title>Registro Usuarios</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <form #formRegistro = "ngForm" (ngSubmit) = " validaRegistro (formRegistro)">
+     
+    <ion-list>
+ <ion-item>
+    <ion-label>Nombre:</ion-label>
+    <ion-input type ="text" name="Nombre" [(ngModel)]= "registro.Nombre"> </ion-input> 
+</ion-item>
 
-</ion-content>
+<ion-item>
+    <ion-label>Apellido Paterno:</ion-label>
+    <ion-input type ="text" name="APaterno" [(ngModel)]= "registro.APaterno" > </ion-input> 
+</ion-item>
+
+<ion-item>
+    <ion-label>Apellido Materno:</ion-label>
+    <ion-input type ="text" name="AMaterno" [(ngModel)]= "registro.AMaterno" > </ion-input> 
+</ion-item>
+
+<ion-item>
+    <ion-label>Correo:</ion-label>
+    <ion-input type ="e-mail" name="Correo" [(ngModel)]= "registro.Correo"> </ion-input> 
+</ion-item>
+
+<ion-item>
+    <ion-label>Telefono:</ion-label>
+    <ion-input type ="number" name="Telefono" [(ngModel)]= "registro.Telefono" > </ion-input> 
+</ion-item>
+
+<ion-item>
+    <ion-label>Contraseña:</ion-label>
+    <ion-input type ="password" name="Contrasenia" [(ngModel)]= "registro.Contrasenia" > </ion-input> 
+</ion-item>
+
+<ion-item>
+    <ion-label>Fecha De Nacimiento</ion-label>
+    <ion-datetime name="Fecha" [(ngModel)]= "registro.Fecha" value="1995-04-15" min="1990-02" max="2200"
+      displayFormat="DD - MMM - YYYY"
+      monthShortNames="Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic"></ion-datetime>
+  </ion-item>
+
+
+    <ion-item>
+      <ion-label>Sexo</ion-label>
+      <ion-select placeholder="Seleccionar" name="Sexo" [(ngModel)]= "registro.Sexo"  >
+        <ion-select-option value="f">Femenino</ion-select-option>
+        <ion-select-option value="m">Masculino</ion-select-option>
+      </ion-select>
+    </ion-item> 
+
+    <ion-item>
+        <ion-label>Dirección:</ion-label>
+        <ion-input type ="text" name="Direccion" [(ngModel)]= "registro.Direccion" > </ion-input> 
+    </ion-item>
+    </ion-list>
+
+    <ion-button type="subimit" expand="small" color ="primary">Registrar</ion-button> 
