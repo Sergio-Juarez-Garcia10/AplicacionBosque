@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
+import { IonicStorageModule } from '@ionic/storage';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,14 @@ export class LoginPage implements OnInit {
       formLogin.value);
       console.log(this.usuario.email);
       console.log(this.usuario.password);
+
       console.log(formLogin.valid);
+      console.log(this.usuario);
+      if (formLogin.invalid) {
+        return;
+      } else {
+       // this.almacenamiento.set('datosUsuario', this.usuario);
+      }
     }
     async alertaConfirmacion() {
       const alert = await this.alerta.create({

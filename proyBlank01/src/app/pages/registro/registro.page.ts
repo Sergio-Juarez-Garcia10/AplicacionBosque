@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
+import { IonicStorageModule } from '@ionic/storage';
 
 @Component({
   selector: 'app-registro',
@@ -36,5 +37,14 @@ export class RegistroPage implements OnInit {
     console.log(this.registro.Fecha);
     console.log(this.registro.Sexo);
     console.log(this.registro.Direccion);
+
+    console.log(formRegistro.valid);
+    console.log(this.registro);
+    if (formRegistro.invalid) {
+      return;
+    } else {
+    }
+
+
   }
 }

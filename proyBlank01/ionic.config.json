@@ -1,5 +1,7 @@
 {
   "name": "proyBlank01",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

@@ -1,10 +1,24 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title class="ion-align-items-center">Configuración APP</ion-title>
+    <ion-title aling = "center">Información</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+    <ion-list>
+        <ion-item>
+           <ion-label>Nombre:</ion-label>
+           <ion-input type ="text" name="Nombre"> </ion-input> 
+       </ion-item>
+
+       <ion-item>
+          <ion-label>Padecimientos:</ion-label>
+          <ion-input type ="text" name="Alergias"> </ion-input> 
+      </ion-item>
+
+
+    
     <ion-item>
         <ion-label>Actividad</ion-label>
         <ion-select placeholder="Seleccionar" name="acti" [(ngModel)]= "actividad.acti"  >
@@ -12,4 +26,5 @@
           <ion-select-option value="A">Alpinismo</ion-select-option>
         </ion-select>
       </ion-item> 
-</ion-content>
+      <ion-button type="subimit" expand="small" color ="primary">Registrar</ion-button> 
+
