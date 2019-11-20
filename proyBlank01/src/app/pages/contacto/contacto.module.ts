@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
-
 import { ContactoPage } from './contacto.page';
 
 const routes: Routes = [
@@ -24,3 +23,4 @@ const routes: Routes = [
   declarations: [ContactoPage]
 })
 export class ContactoPageModule {}
+

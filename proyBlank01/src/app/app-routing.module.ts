@@ -12,6 +12,9 @@ const routes: Routes = [
   { path: 'contacto', loadChildren: './pages/contacto/contacto.module#ContactoPageModule' },
   { path: 'emergencia', loadChildren: './pages/emergencia/emergencia.module#EmergenciaPageModule' },
   { path: 'sitio', loadChildren: './pages/sitio/sitio.module#SitioPageModule' },
+  { path: 'noticias', loadChildren: './pages/noticias/noticias.module#NoticiasPageModule' },
+  { path: 'interface', loadChildren: './pages/interface/interface.module#InterfacePageModule' },
+  { path: 'interfaces', loadChildren: './interface/interfaces/interfaces.module#InterfacesPageModule' },
 ];
 
 @NgModule({
